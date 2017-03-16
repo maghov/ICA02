@@ -1,0 +1,25 @@
+{
+  "name": "ica02",
+  "version": "0.1.0",
+  "description": "Ica 02",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maghov/ICA02.git"
+  },
+  "author": "Gruppe10",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maghov/ICA02/issues"
+  },
+  "homepage": "https://github.com/maghov/ICA02#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1"
+  }
+}
