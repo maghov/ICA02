@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gruppe10</title>
+</head>
+<body>
+    Your name:<br>
+    <input id="nameInput" type="text" name="name" value="">
+    <br><br>
+    <button onclick="postName()">Submit</button>
+    <br>
+    <p id="submitResponse"></p>
+    <br>
+    <button onclick="getNames()">Get Names</button>
+    <p>Name list:</p>
+    <div id="nameList"></div>
+<script>
+    function postName() {
+        console.log("gg");
+        var input = document.getElementById("nameInput").value;
+        var submitResponse = document.getElementById("submitResponse");
+
+        if (!input) {
+            submitResponse.innerHTML = "Name can't be blank";
+            return;
+        }
+
+        var xhttp = new XMLHttpRequest();
+        var name = { "name": input };
+        var url = window.location.href + "register";
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify(name));
+        xhttp.onload = function() {
+            var message = JSON.parse(xhttp.responseText);
+            console.log(message);
+            if(typeof message.message === "string") {
+                message = message.message;
+            }
+            else {
+                message = "Haha we experienced an error, try again!";
+            }
+            submitResponse.innerHTML = message;
+        };
+
+        xhttp.onerror = function() {
+            var message = "Haha we experienced an error, try again!";
+        };
+    }
+
+    function getNames() {
+        var nameList = document.getElementById("nameList");
+        var xhttp = new XMLHttpRequest();
+        var url = window.location.href + "list";
+        xhttp.open("GET", url, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send();
+        xhttp.onload = function() {
+            var userlist = JSON.parse(xhttp.responseText);
+            var nameList = document.getElementById('nameList');
+            while (nameList.hasChildNodes()) {
+                nameList.removeChild(nameList.lastChild);
+            }
+            nameList.appendChild(makeNameList(userlist.users));
+            //alert(window.location.href);
+        };
+
+        xhttp.onerror = function() {
+            var message = "Haha we experienced an error, try again!";
+        };
+    }
+
+    function makeNameList(array) {
+        var list = document.createElement('ol');
+        for(var i = 0; i < array.length; i++) {
+            var item = document.createElement('li');
+            item.appendChild(document.createTextNode(array[i].name));
+            list.appendChild(item);
+        }
+        return list;
+    }
+
+</script>
+</body>
+</html>
