@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gruppe10</title>
+    <title>Distributed Names</title>
 </head>
 <body>
     Your name:<br>
-    <input id="inputNavn" type="tekst" name="navn" value="">
+    <input id="nameInput" type="text" name="name" value="">
     <br><br>
     <button onclick="postName()">Submit</button>
     <br>
@@ -18,14 +18,12 @@
 <script>
     function postName() {
         console.log("gg");
-        var input = document.getElementById("inputNavn").value;
+        var input = document.getElementById("nameInput").value;
         var submitResponse = document.getElementById("submitResponse");
-
         if (!input) {
-            submitResponse.innerHTML = "Du må skrive et navn";
+            submitResponse.innerHTML = "Name can't be blank";
             return;
         }
-
         var xhttp = new XMLHttpRequest();
         var name = { "name": input };
         var url = window.location.href + "register";
@@ -35,27 +33,25 @@
         xhttp.onload = function() {
             var message = JSON.parse(xhttp.responseText);
             console.log(message);
-            if(typeof message.message === "string") {
-                message = message.message;
+            if(typeof message.Message === "string") {
+                message = message.Message;
             }
             else {
-                message = "Ups, her har det skjedd en feil";
+                message = "Haha we experienced an error, try again!";
             }
             submitResponse.innerHTML = message;
         };
-
         xhttp.onerror = function() {
-            var message = "Ups, her har det skjedd en feil";
+            var message = "Haha we experienced an error, try again!";
         };
     }
-
     function getNames() {
         var nameList = document.getElementById("nameList");
         var xhttp = new XMLHttpRequest();
         var url = window.location.href + "list";
         xhttp.open("GET", url, true);
         xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send();e
+        xhttp.send();
         xhttp.onload = function() {
             var userlist = JSON.parse(xhttp.responseText);
             var nameList = document.getElementById('nameList');
@@ -65,12 +61,10 @@
             nameList.appendChild(makeNameList(userlist.users));
             //alert(window.location.href);
         };
-
         xhttp.onerror = function() {
-            var message = "Ups, her har det skjedd en feil";
+            var message = "Haha we experienced an error, try again!";
         };
     }
-
     function makeNameList(array) {
         var list = document.createElement('ol');
         for(var i = 0; i < array.length; i++) {
@@ -80,7 +74,6 @@
         }
         return list;
     }
-
 </script>
 </body>
 </html>
