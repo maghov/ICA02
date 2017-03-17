@@ -33,8 +33,8 @@
         xhttp.onload = function() {
             var message = JSON.parse(xhttp.responseText);
             console.log(message);
-            if(typeof message.Message === "string") {
-                message = message.Message;
+            if(typeof message.message === "string") {
+                message = message.message;
             }
             else {
                 message = "Haha we experienced an error, try again!";
