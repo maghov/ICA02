@@ -38,7 +38,7 @@ router.post("/register", function (req, res) {
   users[pos] = req.body;
   res.status(200).send({
     success: true,
-    message: "Brukernavn lagt til"
+    message: "Brukernavn lagt til" +  name
   });
 });
 
