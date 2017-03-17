@@ -38,7 +38,7 @@ router.post("/register", function (req, res) {
   users[pos] = req.body;
   res.status(200).send({
     success: true,
-    message: "name added"
+    message: "Brukernavn lagt til"
   });
 });
 
@@ -62,7 +62,7 @@ app.get("/", function(req, res){
 app.use("/", router);
 
 app.listen(process.env.PORT);
-console.log("Server is listenting to port", process.env.PORT);
+console.log("Server finner port", process.env.PORT);
 
 for (let i = 0; i < nodes.length; i++) {
   sendNodeInfo(myNode, nodes[i]);
@@ -78,13 +78,10 @@ function sendNodeInfo(node, receiver) {
 
 
         node = JSON.stringify(node);
-        //console.log(node);
-        // An object of options to indicate where to post to
         let post_options = {
             host: ip,
             port: port,
             path: '/nodes',
-            // path: '/api/nodes',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
