@@ -21,7 +21,7 @@
         var input = document.getElementById("nameInput").value;
         var submitResponse = document.getElementById("submitResponse");
         if (!input) {
-            submitResponse.innerHTML = "Name can't be blank";
+            submitResponse.innerHTML = "Du må skrive et brukernavn";
             return;
         }
         var xhttp = new XMLHttpRequest();
@@ -37,12 +37,12 @@
                 message = message.message;
             }
             else {
-                message = "Haha we experienced an error, try again!";
+                message = "Ups, det har skjedd en feil";
             }
             submitResponse.innerHTML = message;
         };
         xhttp.onerror = function() {
-            var message = "Haha we experienced an error, try again!";
+            var message = "Ups, det har skjedd en feil";
         };
     }
     function getNames() {
@@ -59,10 +59,9 @@
                 nameList.removeChild(nameList.lastChild);
             }
             nameList.appendChild(makeNameList(userlist.users));
-            //alert(window.location.href);
         };
         xhttp.onerror = function() {
-            var message = "Haha we experienced an error, try again!";
+            var message = "Ups, det har skjedd en feil";
         };
     }
     function makeNameList(array) {
