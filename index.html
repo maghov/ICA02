@@ -6,7 +6,7 @@
 </head>
 <body>
     Your name:<br>
-    <input id="nameInput" type="text" name="name" value="">
+    <input id="inputNavn" type="tekst" name="navn" value="">
     <br><br>
     <button onclick="postName()">Submit</button>
     <br>
@@ -18,11 +18,11 @@
 <script>
     function postName() {
         console.log("gg");
-        var input = document.getElementById("nameInput").value;
+        var input = document.getElementById("inputNavn").value;
         var submitResponse = document.getElementById("submitResponse");
 
         if (!input) {
-            submitResponse.innerHTML = "Name can't be blank";
+            submitResponse.innerHTML = "Du må skrive et navn";
             return;
         }
 
@@ -39,13 +39,13 @@
                 message = message.message;
             }
             else {
-                message = "Haha we experienced an error, try again!";
+                message = "Ups, her har det skjedd en feil";
             }
             submitResponse.innerHTML = message;
         };
 
         xhttp.onerror = function() {
-            var message = "Haha we experienced an error, try again!";
+            var message = "Ups, her har det skjedd en feil";
         };
     }
 
@@ -55,7 +55,7 @@
         var url = window.location.href + "list";
         xhttp.open("GET", url, true);
         xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send();
+        xhttp.send();e
         xhttp.onload = function() {
             var userlist = JSON.parse(xhttp.responseText);
             var nameList = document.getElementById('nameList');
@@ -67,7 +67,7 @@
         };
 
         xhttp.onerror = function() {
-            var message = "Haha we experienced an error, try again!";
+            var message = "Ups, her har det skjedd en feil";
         };
     }
 
