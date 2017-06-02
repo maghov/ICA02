@@ -1,15 +1,7 @@
 # ICA02 Gruppe 10
+
 # Ubuntu instance on UH-IaaS
 Our application allows users to connect to a webpage which contains a field where they can input their username and retrieve names that were submitted by other users. However, it is important to note that the nodes are hardcoded in and do not represent actual computers who are connected to the webpage. While actual computers can connect to the webpage by using their web browser, only the hardcoded nodes will be listed.
-
-
-## Getting Started
-To create our application there were certain steps that needed to be taken to be able to achieve the functionality that we have in our application:
-
-1. The first step was to create a new GitHub repository in order to make it easier for us to collaborate together. This has also given us the opportunity to make our project open source.
-2. The second step was to write the JavaScript code and HTML. We began by first writing a basic HTML code where we implemented three functions. "PostNames" is the first function, this makes it possible for the user to write and submit a username on the webpage. The second function was "GetNames" this functions allows the user to retrieve usernames that were submitted on the webpage and display them. The third function was "MakeNameList" this function places the names that were submitted into a neat array list. https://github.com/maghov/ICA02/blob/master/index.html
-3. The third step was to pull the GitHub repository to our cloud instance in order to make it accessible for all of our group teammates that use the cloud instance.
-4. The fourth step was to install a node package manager. This was done by using the command "sudo apt install npm" (npmjs.com, 2017)
 
 ### Prerequisites
 - Ubuntu Server
@@ -20,7 +12,7 @@ To create our application there were certain steps that needed to be taken to be
 
 ### Installing
 #### Instance
-1. The first step was to set up a keypair to get secure access to our virtual machine by using SSH (Secure Socket Shell) http://searchsecurity.techtarget.com/definition/Secure-Shell
+1. The first step is to set up a keypair to get secure access to our virtual machine by using SSH (Secure Socket Shell) http://searchsecurity.techtarget.com/definition/Secure-Shell
 
 2. Afterwards we set up our instance, chose the operating system and chose the hardware specifications. Ubuntu server was also the chosen operating system.
 
